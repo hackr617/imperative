@@ -1,0 +1,13 @@
+{
+  // extend base config
+  "extends": "./tsconfig.json",
+  "include": [
+    "__tests__",
+    "packages",
+    ".eslintrc.js"
+  ],
+  "exclude": [
+    "**/node_modules/**/*",
+    "__tests__/__results__/**"
+  ]
+}

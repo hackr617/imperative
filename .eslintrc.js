@@ -6,7 +6,7 @@ It represents the closest reasonable ESLint configuration to this
 project's original TSLint configuration.
 
 We recommend eventually switching this configuration to extend from
-the recommended rulesets in typescript-eslint. 
+the recommended rulesets in typescript-eslint.
 https://github.com/typescript-eslint/tslint-to-eslint-config/blob/master/docs/FAQs.md
 
 Happy linting! 💖
@@ -18,12 +18,14 @@ module.exports = {
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "project": "tsconfig.json",
+        "project": "tsconfig.eslint.json",
         "sourceType": "module"
     },
     "plugins": [
         "@typescript-eslint",
-        "@typescript-eslint/tslint"
+        "import",
+        "jsdoc",
+        "prefer-arrow"
     ],
     "rules": {
         "@typescript-eslint/adjacent-overload-signatures": "error",
@@ -53,7 +55,6 @@ module.exports = {
                 }
             }
         ],
-        "@typescript-eslint/class-name-casing": "error",
         "@typescript-eslint/consistent-type-assertions": "error",
         "@typescript-eslint/dot-notation": "error",
         "@typescript-eslint/indent": [
@@ -66,7 +67,19 @@ module.exports = {
                 },
                 "FunctionExpression": {
                     "parameters": "first"
-                }
+                },
+                "SwitchCase": 1
+            }
+        ],
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+                "selector": "class",
+                "format": ["PascalCase"]
+            },
+            {
+                "selector": "interface",
+                "format": ["PascalCase"]
             }
         ],
         "@typescript-eslint/no-empty-function": "error",
@@ -120,9 +133,9 @@ module.exports = {
         "import/no-extraneous-dependencies": "error",
         "import/no-internal-modules": "error",
         "import/order": "off",
-        "jsdoc/check-alignment": "error",
-        "jsdoc/check-indentation": "error",
-        "jsdoc/newline-after-description": "error",
+        // "jsdoc/check-alignment": "error",
+        // "jsdoc/check-indentation": "error",
+        // "jsdoc/newline-after-description": "error",
         "max-classes-per-file": [
             "error",
             1
@@ -207,17 +220,6 @@ module.exports = {
             }
         ],
         "use-isnan": "error",
-        "valid-typeof": "off",
-        "@typescript-eslint/tslint/config": [
-            "error",
-            {
-                "rules": {
-                    "whitespace": [
-                        true,
-                        "check-module"
-                    ]
-                }
-            }
-        ]
+        "valid-typeof": "off"
     }
 };
