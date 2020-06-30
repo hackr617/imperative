@@ -263,7 +263,8 @@ export class Imperative {
                 const imperativeLogger = Logger.getImperativeLogger();
                 imperativeLogger.fatal(require("util").inspect(error));
                 const os = require("os");
-                imperativeLogger.fatal("Diagnostic information:\n" +
+                imperativeLogger.fatal(
+                    "Diagnostic information:\n" +
                     "Platform: '%s', Architecture: '%s', Process.argv: '%s'\n" +
                     "Node versions: '%s'" +
                     "Environmental variables: '%s'",
@@ -687,7 +688,8 @@ export class Imperative {
             loadedConfig.profiles.forEach((profile) => {
                 if (profile.authConfig != null) {
                     for (const requiredOption of ["host", "port", "user", "password", "tokenType", "tokenValue"]) {
-                        ImperativeExpect.toNotBeNullOrUndefined(profile.schema.properties[requiredOption], `Profile of type ${profile.type} with authConfig property must have ${requiredOption} option defined`);
+                        ImperativeExpect.toNotBeNullOrUndefined(profile.schema.properties[requiredOption],
+                            `Profile of type ${profile.type} with authConfig property must have ${requiredOption} option defined`);
                     }
                     authConfigs[profile.type] = profile.authConfig;
                 }

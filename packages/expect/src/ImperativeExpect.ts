@@ -114,10 +114,10 @@ export class ImperativeExpect {
         }
         if (isNullOrUndefined(foundEntry)) {
             throw new ImperativeError({
-                    msg: msg || "The required entry was NOT found within the input array: " +
-                    arr.map((entry) => inspect(entry))
-                },
-                {tag: ImperativeExpect.ERROR_TAG});
+                msg: msg || "The required entry was NOT found within the input array: " +
+                arr.map((entry) => inspect(entry))
+            },
+            {tag: ImperativeExpect.ERROR_TAG});
         }
 
         return foundEntry;

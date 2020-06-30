@@ -179,20 +179,18 @@ export class IO {
             }
         } catch (exception) {
             throw new ImperativeError({
-                    msg: "Failed to create symbolic link from '" + newSymLinkPath +
-                        "' to '" + existingDirPath + "'\n" +
-                        "Reason: " + exception.message + "\n" +
-                        "Full exception: " + exception
-                }
-            );
+                msg: "Failed to create symbolic link from '" + newSymLinkPath +
+                    "' to '" + existingDirPath + "'\n" +
+                    "Reason: " + exception.message + "\n" +
+                    "Full exception: " + exception
+            });
         }
 
         throw new ImperativeError({
-                msg: "The intended symlink '" + newSymLinkPath +
-                    "' already exists and is not a symbolic link. So, we did not create a symlink from there to '" +
-                    existingDirPath + "'."
-            }
-        );
+            msg: "The intended symlink '" + newSymLinkPath +
+                "' already exists and is not a symbolic link. So, we did not create a symlink from there to '" +
+                existingDirPath + "'."
+        });
     }
 
     /**
@@ -407,11 +405,10 @@ export class IO {
             }
         } catch (exception) {
             throw new ImperativeError({
-                    msg: "Failed to delete the directory tree '" + pathToTreeToDelete +
-                        "'\nReason: " + exception.message + "\n" +
-                        "Full exception: " + exception
-                }
-            );
+                msg: "Failed to delete the directory tree '" + pathToTreeToDelete +
+                    "'\nReason: " + exception.message + "\n" +
+                    "Full exception: " + exception
+            });
         }
     }
 
@@ -434,17 +431,15 @@ export class IO {
             }
         } catch (ioExcept) {
             throw new ImperativeError({
-                    msg: "Failed to delete the symbolic link '" + symLinkPath +
-                        "'\nReason: " + ioExcept.message + "\n" +
-                        "Full exception: " + ioExcept
-                }
-            );
+                msg: "Failed to delete the symbolic link '" + symLinkPath +
+                    "'\nReason: " + ioExcept.message + "\n" +
+                    "Full exception: " + ioExcept
+            });
         }
 
         throw new ImperativeError({
-                msg: "The specified symlink '" + symLinkPath +
-                    "' already exists and is not a symbolic link. So, we did not delete it."
-            }
-        );
+            msg: "The specified symlink '" + symLinkPath +
+                "' already exists and is not a symbolic link. So, we did not delete it."
+        });
     }
 }

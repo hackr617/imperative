@@ -23,29 +23,29 @@ import { installPackages } from "../NpmFunctions";
  *
  */
 export function update(packageName: string, registry: string) {
-  const iConsole = Logger.getImperativeLogger();
-  const npmPackage = packageName;
+    const iConsole = Logger.getImperativeLogger();
+    const npmPackage = packageName;
 
-  iConsole.debug(`updating package: ${packageName}`);
+    iConsole.debug(`updating package: ${packageName}`);
 
-  // NOTE: Using npm install in order to retrieve the version which may be updated
-  iConsole.info("updating package...this may take some time.");
+    // NOTE: Using npm install in order to retrieve the version which may be updated
+    iConsole.info("updating package...this may take some time.");
 
-  const execOutput = installPackages(PMFConstants.instance.PLUGIN_INSTALL_LOCATION, registry, npmPackage);
+    const execOutput = installPackages(PMFConstants.instance.PLUGIN_INSTALL_LOCATION, registry, npmPackage);
 
-  /* We get the package name (aka plugin name)
-   * from the output of the npm command.
-   * The regex is meant to match: + plugin-name@version.
-   */
-  const stringOutput = execOutput.toString();
-  iConsole.info("stringOutput = " + stringOutput);
-  const regex = /\+\s(.*)@(.*)$/gm;
-  const match = regex.exec(stringOutput);
-  const packageVersion = match[2];
+    /* We get the package name (aka plugin name)
+    * from the output of the npm command.
+    * The regex is meant to match: + plugin-name@version.
+    */
+    const stringOutput = execOutput.toString();
+    iConsole.info("stringOutput = " + stringOutput);
+    const regex = /\+\s(.*)@(.*)$/gm;
+    const match = regex.exec(stringOutput);
+    const packageVersion = match[2];
 
-  iConsole.info("Update complete");
+    iConsole.info("Update complete");
 
-  // return the package version so the plugins.json file can be updated
-  return packageVersion;
+    // return the package version so the plugins.json file can be updated
+    return packageVersion;
 }
 

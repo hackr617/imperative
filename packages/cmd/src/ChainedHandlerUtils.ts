@@ -43,9 +43,9 @@ export class ChainedHandlerService {
         const args: yargs.Arguments = {$0: binName, _: []};
         if (previousResponseObjects.length < handlerIndex) {
             throw new ImperativeError({
-                msg: TextUtils.formatMessage("You must provide at least as many response " +
-                    "objects as chained handlers that have been" +
-                    " processed so far. You provided %d response objects  and tried to process the handler at index %d.",
+                msg: TextUtils.formatMessage(
+                    "You must provide at least as many response objects as chained handlers that have been " +
+                    "processed so far. You provided %d response objects  and tried to process the handler at index %d.",
                     previousResponseObjects.length,
                     handlerIndex)
             });

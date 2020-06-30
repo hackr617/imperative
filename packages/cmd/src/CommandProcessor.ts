@@ -659,13 +659,8 @@ export class CommandProcessor {
         // Display the first example on error
         if (this.mDefinition.examples && this.mDefinition.examples.length > 0) {
             let exampleText = TextUtils.wordWrap(`- ${this.mDefinition.examples[0].description}:\n\n`, undefined, " ");
-            exampleText += `      \$ ${
-                this.rootCommand
-                } ${
-                CommandUtils.getFullCommandName(this.mDefinition, this.mFullDefinition)
-                } ${
-                this.mDefinition.examples[0].options
-                }\n`;
+            exampleText += `      \$ ${this.rootCommand} ${CommandUtils.getFullCommandName(this.mDefinition, this.mFullDefinition)} ` +
+                `${this.mDefinition.examples[0].options}\n`;
 
             finalHelp += `\nExample:\n\n${exampleText}`;
         }
@@ -792,7 +787,8 @@ export class CommandProcessor {
             this.log.error(`Failed to load/require handler "${handlerPath}" for command "${this.definition.name}".`);
             this.log.error(`Error details: ${handlerErr.message}`);
             const os = require("os");
-            this.log.error("Diagnostic information:\n" +
+            this.log.error(
+                "Diagnostic information:\n" +
                 "Platform: '%s', Architecture: '%s', Process.argv: '%s'\n" +
                 "Environmental variables: '%s'",
                 os.platform(), os.arch(), process.argv.join(" "),
@@ -859,7 +855,8 @@ export class CommandProcessor {
         response.endProgressBar();
 
         const os = require("os");
-        this.log.error("Diagnostic information:\n" +
+        this.log.error(
+            "Diagnostic information:\n" +
             "Platform: '%s', Architecture: '%s', Process.argv: '%s'\n" +
             "Node versions: '%s'" +
             "Environmental variables: '%s'",

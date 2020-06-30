@@ -13,15 +13,15 @@ import { ICommandDefinition } from "../../../../../cmd";
 import { join } from "path";
 
 const pluginDescription =
-  "The name of the plug-in to update.\n\n" +
-  "If the plug-in argument is omitted, no action is taken.";
+    "The name of the plug-in to update.\n\n" +
+    "If the plug-in argument is omitted, no action is taken.";
 
 const registryDescription =
-  "The npm registry that is used when installing remote packages. When this value is omitted, the " +
-  "value returned by `npm config get registry` is used.\n" +
-  "\n" +
-  "For more information about npm registries, see: " +
-  "https://docs.npmjs.com/misc/registry";
+    "The npm registry that is used when installing remote packages. When this value is omitted, the " +
+    "value returned by `npm config get registry` is used.\n" +
+    "\n" +
+    "For more information about npm registries, see: " +
+    "https://docs.npmjs.com/misc/registry";
 
 const loginDescription =
     "The flag to add a registry user account to install from secure registry. It saves credentials " +
@@ -36,43 +36,43 @@ const loginDescription =
  * @type {ICommandDefinition}
  */
 export const updateDefinition: ICommandDefinition = {
-  name: "update",
-  type: "command",
-  summary: "Update a plug-in",
-  description: "Update plug-ins.",
-  handler: join(__dirname, "update.handler"),
-  positionals: [
-    {
-      name: "plugin...",
-      type: "string",
-      description: pluginDescription,
-      required: false
-    }
-  ],
-  options: [
-    {
-      name: "registry",
-      type: "string",
-      description: registryDescription,
-      required: false
-    },
-    {
-      name: "login",
-      type: "boolean",
-      description: loginDescription,
-      required: false,
-      implies: ["registry"]
-    }
-  ],
-  examples: [
-    {
-      description: "Update a plug-in",
-      options    : "my-plugin"
-    },
-    {
-      description: "Update a remote plug-in from the registry which requires authorization" +
-      "(don't need to use this flag if you have already logged in before)",
-      options: "my-plugin --registry https://registry.npmjs.org/ --login"
-    }
-  ]
+    name: "update",
+    type: "command",
+    summary: "Update a plug-in",
+    description: "Update plug-ins.",
+    handler: join(__dirname, "update.handler"),
+    positionals: [
+        {
+            name: "plugin...",
+            type: "string",
+            description: pluginDescription,
+            required: false
+        }
+    ],
+    options: [
+        {
+            name: "registry",
+            type: "string",
+            description: registryDescription,
+            required: false
+        },
+        {
+            name: "login",
+            type: "boolean",
+            description: loginDescription,
+            required: false,
+            implies: ["registry"]
+        }
+    ],
+    examples: [
+        {
+            description: "Update a plug-in",
+            options    : "my-plugin"
+        },
+        {
+            description: "Update a remote plug-in from the registry which requires authorization" +
+                "(don't need to use this flag if you have already logged in before)",
+            options: "my-plugin --registry https://registry.npmjs.org/ --login"
+        }
+    ]
 };

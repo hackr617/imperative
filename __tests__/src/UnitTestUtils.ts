@@ -9,7 +9,7 @@
 *
 */
 
-/* tslint:disable:only-arrow-functions */
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
 // we need non-arrow functions to override some jest code
 import { TestLogger } from "../TestLogger";
 import { isNullOrUndefined } from "util";

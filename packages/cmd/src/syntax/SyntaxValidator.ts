@@ -469,7 +469,8 @@ export class SyntaxValidator {
         mustacheSummary.value = commandArguments[optionDefinition.name];
         responseObject.console.errorHeader(syntaxErrorHeader.message);
         const msg: string = responseObject
-            .console.error("Invalid file path specified for option:\n{{long}} {{aliases}}\n" +
+            .console.error(
+                "Invalid file path specified for option:\n{{long}} {{aliases}}\n" +
                 "\nYou specified:\n\"{{&value}}\"\n\nThe file does not exist",
                 mustacheSummary);
         this.appendValidatorError(responseObject,
@@ -578,7 +579,8 @@ export class SyntaxValidator {
                                        responseObject: CommandResponse) {
         responseObject.console.errorHeader(syntaxErrorHeader.message);
         const msg: string =
-            responseObject.console.error("Invalid format specified for positional option:\n{{parameter}}\n\n" +
+            responseObject.console.error(
+                "Invalid format specified for positional option:\n{{parameter}}\n\n" +
                 "You specified:\n{{spec}}\n\nOption must match the following regular expression:\n{{format}}",
                 {
                     parameter: positionalDefinition.name, format: positionalDefinition.regex,
@@ -727,8 +729,7 @@ export class SyntaxValidator {
                                           optionDef2: ICommandOptionDefinition,
                                           responseObject: CommandResponse) {
         responseObject.console.errorHeader(syntaxErrorHeader.message);
-        const msg: string
-            = responseObject.console.error("The following options conflict (mutually exclusive):\n{{a}}\n{{b}}", {
+        const msg: string = responseObject.console.error("The following options conflict (mutually exclusive):\n{{a}}\n{{b}}", {
             a: this.getDashFormOfOption(optionDef1.name),
             b: this.getDashFormOfOption(optionDef2.name)
         });
@@ -846,7 +847,8 @@ export class SyntaxValidator {
         if (value !== undefined && value !== true && value !== false) {
             responseObject.console.errorHeader(syntaxErrorHeader.message);
             const msg: string = responseObject
-                .console.error("Invalid value specified for option:\n{{long}} {{aliases}}\n\n" +
+                .console.error(
+                    "Invalid value specified for option:\n{{long}} {{aliases}}\n\n" +
                     "You specified:\n{{value}}\n\n" +
                     "The value must be a boolean (true or false).",
                     mustacheSummary);
@@ -874,7 +876,8 @@ export class SyntaxValidator {
         if (isNaN(value)) {
             responseObject.console.errorHeader(syntaxErrorHeader.message);
             const msg: string = responseObject
-                .console.error("Invalid value specified for option:\n{{long}} {{aliases}}\n\n" +
+                .console.error(
+                    "Invalid value specified for option:\n{{long}} {{aliases}}\n\n" +
                     "You specified:\n{{value}}\n\n" +
                     "The value must be a number",
                     mustacheSummary);

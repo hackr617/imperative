@@ -15,10 +15,13 @@ import { format, isArray, isNullOrUndefined, isNumber, isString } from "util";
  * Interface of an explanation map object
  */
 export interface IExplanationMap {
-    explainedParentKey: string;              // parent key name in case this is map for nested child JSON object
-    ignoredKeys: string;                     // comma separated list of keys whose value will be ignored
-    [key: string]: string | IExplanationMap; // all explained keys of JSON object at this level and 'link' to all nested JSON objects
-                                             // which will be explained by their explanation maps
+    // parent key name in case this is map for nested child JSON object
+    explainedParentKey: string;
+    // comma separated list of keys whose value will be ignored
+    ignoredKeys: string;
+    // all explained keys of JSON object at this level and 'link' to all nested JSON objects
+    // which will be explained by their explanation maps
+    [key: string]: string | IExplanationMap;
 }
 
 /**
@@ -26,7 +29,7 @@ export interface IExplanationMap {
  * Low import impact
  */
 export class TextUtils {
-    public static readonly DEFAULT_WRAP_WIDTH = 80;
+    public static readonly DEFAULT_WRAP_WIDTH = 80;  // eslint-disable-line no-magic-numbers
     public static readonly AVAILABLE_CHALK_COLORS = ["red", "magenta", "blue", "green", "grey", "yellow", "cyan"];
 
     /**

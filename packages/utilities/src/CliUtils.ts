@@ -441,7 +441,7 @@ export class CliUtils {
     public static async promptWithTimeout(
         questionText: string,
         hideText: boolean = false,
-        secToWait: number = 30
+        secToWait: number = 30  // eslint-disable-line no-magic-numbers
     ): Promise<string> {
 
         // readline provides our interface for terminal I/O
@@ -452,7 +452,7 @@ export class CliUtils {
             terminal: true,
             prompt: questionText
         });
-        const writeToOutputOrig = ttyIo._writeToOutput;
+        const writeToOutputOrig = ttyIo._writeToOutput;  // eslint-disable-line no-underscore-dangle
 
         // ask user the desired question and then asynchronously read answer
         ttyIo.prompt();
@@ -463,7 +463,7 @@ export class CliUtils {
         }).on("close", () => {
             if (hideText) {
                 // The user's Enter key was echoed as a '*', so now output a newline
-                ttyIo._writeToOutput = writeToOutputOrig;
+                ttyIo._writeToOutput = writeToOutputOrig;  // eslint-disable-line no-underscore-dangle
                 ttyIo.output.write("\n");
             }
         });
@@ -471,7 +471,8 @@ export class CliUtils {
         // when asked to hide text, override output to only display stars
         if (hideText) {
             const os = require("os");
-            ttyIo._writeToOutput = function _writeToOutput(stringToWrite: string) {
+            // eslint-disable-next-line no-underscore-dangle
+            ttyIo._writeToOutput = (stringToWrite: string) => {
                 if (stringToWrite === os.EOL) {
                     return;
                 }

@@ -22,27 +22,27 @@ const pluginDescription =
  * @type {ICommandDefinition}
  */
 export const validateDefinition: ICommandDefinition = {
-  name: "validate",
-  type: "command",
-  summary: "Validate a plug-in",
-  description: "Validate a plug-in that has been installed.",
-  handler: join(__dirname, "validate.handler"),
-  positionals: [
-    {
-      name: "plugin",
-      type: "string",
-      description: pluginDescription,
-      required: false
-    }
-  ],
-  examples: [
-    {
-      description: `Validate a plug-in named my-plugin`,
-      options    : "my-plugin"
-    },
-    {
-      description: "Validate all installed plug-ins",
-      options    : ""
-    },
-  ]
+    name: "validate",
+    type: "command",
+    summary: "Validate a plug-in",
+    description: "Validate a plug-in that has been installed.",
+    handler: join(__dirname, "validate.handler"),
+    positionals: [
+        {
+            name: "plugin",
+            type: "string",
+            description: pluginDescription,
+            required: false
+        }
+    ],
+    examples: [
+        {
+            description: `Validate a plug-in named my-plugin`,
+            options    : "my-plugin"
+        },
+        {
+            description: "Validate all installed plug-ins",
+            options    : ""
+        },
+    ]
 };
